@@ -14,7 +14,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'bling/vim-airline'
 Bundle 'christoomey/vim-run-interactive'
 "Bundle 'Lokaltog/vim-easymotion'
-"Bundle 'Valloric/YouCompleteMe'
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'bronson/vim-trailing-whitespace'
 "Bundle 'Shougo/neocomplete'
 Bundle 'mileszs/ack.vim'
@@ -22,6 +22,7 @@ Bundle 'Valloric/ListToggle'
 Bundle 'mbbill/undotree'
 Bundle 'pthrasher/conqueterm-vim'
 Bundle 'Yggdroot/indentLine'
+Bundle 'Yggdroot/LeaderF'
 
 " vim-scripts repos
 Bundle 'autoload_cscope.vim'
@@ -33,6 +34,49 @@ Bundle 'The-NERD-Commenter'
 Bundle 'The-NERD-tree'
 Bundle 'YankRing.vim'
 Bundle 'a.vim'
+
+"""""""""""""""""""""""""""YouCompleteMe""""""""""""""""""""""""""
+set encoding=utf-8
+let g:ycm_server_python_interpreter = '/home/wei.hong/python3.7/bin/python3'
+let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_use_clangd = 0
+let g:ycm_show_diagnostics_ui = 0
+set completeopt=menu,menuone
+let g:ycm_add_preview_to_completeopt = 0
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>" |
+
+"""""""""""""""""""""""""""""LeaderF""""""""""""""""""""""""""""
+function! s:configure_leaderf()
+	" don't show the help in normal mode
+	let g:Lf_HideHelp = 1
+	let g:Lf_UseCache = 0
+	let g:Lf_UseVersionControlTool = 0
+	let g:Lf_IgnoreCurrentBufferName = 1
+
+	" popup mode
+	let g:Lf_PreviewResult = {'Function': 0, 'BufTag': 0 }
+
+	" key map
+	let g:Lf_CommandMap = {'<C-K>': ['<Up>'], '<C-J>': ['<Down>']}
+	let g:Lf_ShortcutF = "<leader>ff"
+	noremap <leader>fb :<C-U><C-R>=printf("Leaderf buffer %s", "")<CR><CR>
+	noremap <leader>fm :<C-U><C-R>=printf("Leaderf mru %s", "")<CR><CR>
+	noremap <leader>ft :<C-U><C-R>=printf("Leaderf bufTag %s", "")<CR><CR>
+	noremap <leader>fl :<C-U><C-R>=printf("Leaderf line %s", "")<CR><CR>
+
+	let g:Lf_GtagsAutoGenerate = 0
+	let g:Lf_Gtagslabel = 'native-pygments'
+	noremap <leader>fr :<C-U><C-R>=printf("Leaderf! gtags -r %s --auto-jump", expand("<cword>"))<CR><CR>
+	noremap <leader>fd :<C-U><C-R>=printf("Leaderf! gtags -d %s --auto-jump", expand("<cword>"))<CR><CR>
+	noremap <leader>fo :<C-U><C-R>=printf("Leaderf! gtags --recall %s", "")<CR><CR>
+	noremap <leader>fn :<C-U><C-R>=printf("Leaderf gtags --next %s", "")<CR><CR>
+	noremap <leader>fp :<C-U><C-R>=printf("Leaderf gtags --previous %s", "")<CR><CR>
+
+endfunction
+
+call s:configure_leaderf()
+"""""""""""""""""""""""""""
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
