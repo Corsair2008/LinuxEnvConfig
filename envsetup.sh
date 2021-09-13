@@ -20,7 +20,7 @@ import_config()
 	fi
 
 	ln -sf $CURDIR/bashrc ~/.bashrc
-	ln -sf $CURDIR/tmux.conf ~/.tmux.conf
+#	ln -sf $CURDIR/tmux.conf ~/.tmux.conf
 }
 
 install_font()
