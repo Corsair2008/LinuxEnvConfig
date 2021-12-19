@@ -225,6 +225,10 @@ let g:neocomplete#sources#tags#cache_limit_size = 16777216 " 16MB
 
 set-window-option -g mode-keys vi
 
+" copy to clipboard
+" sudo apt install vim-gtk
+set clipboard=unnamedplus
+
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
 endif
