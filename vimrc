@@ -223,6 +223,7 @@ let g:neocomplete#auto_completion_start_length = 2
 " increase limit for tag cache files
 let g:neocomplete#sources#tags#cache_limit_size = 16777216 " 16MB
 
+set-window-option -g mode-keys vi
 
 if filereadable(expand("~/.vimrc.bundles"))
   source ~/.vimrc.bundles
