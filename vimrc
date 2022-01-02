@@ -60,10 +60,10 @@ set backspace=indent,eol,start
 set noswapfile
 
 " Softtabs, 2 spaces
-set tabstop=2
-set softtabstop=2
-set shiftwidth=2
-set noexpandtab
+set ts=4
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 
 " Auto indent
 set autoindent
